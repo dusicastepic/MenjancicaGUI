@@ -33,7 +33,7 @@ public class ObrisiKursGUI extends JFrame {
 	private JTextField tfSrednjiKurs;
 	private JTextField tfSkraceniNaziv;
 	private JCheckBox chckbxZaistaObrisiKurs;
-	
+
 	private MenjacnicaGUI glavniProzor;
 
 
@@ -65,7 +65,7 @@ public class ObrisiKursGUI extends JFrame {
 		contentPane.add(getTfSrednjiKurs());
 		contentPane.add(getTfSkraceniNaziv());
 		contentPane.add(getChckbxZaistaObrisiKurs());
-		
+
 		this.glavniProzor = glavniProzor;
 	}
 
@@ -117,7 +117,7 @@ public class ObrisiKursGUI extends JFrame {
 			btnObrisi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					obrisi();
-					
+
 				}
 			});
 			btnObrisi.setEnabled(false);
@@ -197,11 +197,11 @@ public class ObrisiKursGUI extends JFrame {
 			chckbxZaistaObrisiKurs.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(chckbxZaistaObrisiKurs.isSelected())
-							btnObrisi.setEnabled(true);
+						btnObrisi.setEnabled(true);
 					else {
 						btnObrisi.setEnabled(false);
 					}
-							
+
 				}
 			});
 			chckbxZaistaObrisiKurs.setBounds(10, 194, 200, 50);
@@ -214,12 +214,11 @@ public class ObrisiKursGUI extends JFrame {
 					" Naziv prodajnog kursa: " + tfProdajniKurs.getText() + " Naziv kupovnog kursa: "+ tfKupovniKurs.getText() 
 					+ " Naziv srednjeg kursa: "+ tfSrednjiKurs.getText() + " Skraceni naziv:"+ tfSkraceniNaziv.getText();
 			glavniProzor.prikazi(tekst);
-			
+
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(contentPane, e.getMessage(),
-					"Greška", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, e.getMessage(),"Greška", JOptionPane.ERROR_MESSAGE);
 		}
-		
-		
+
+
 	}
 }
