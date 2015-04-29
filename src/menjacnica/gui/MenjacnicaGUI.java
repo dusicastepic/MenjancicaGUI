@@ -66,9 +66,9 @@ public class MenjacnicaGUI extends JFrame {
 	private JScrollPane scrollPane;
 	private JTable table;
 	private JPopupMenu popupMenu;
-	private JMenuItem mntmNewMenuItem_1;
-	private JMenuItem mntmNewMenuItem_2;
-	private JMenuItem mntmNewMenuItem_3;
+	private JMenuItem mntmDodaj;
+	private JMenuItem mntmObrisi;
+	private JMenuItem mntmZamena;
 	private JPanel panel_1;
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
@@ -98,7 +98,7 @@ public class MenjacnicaGUI extends JFrame {
 	public MenjacnicaGUI() {
 		setTitle("Menjacnica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 486, 366);
+		setBounds(100, 100, 570, 374);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setPreferredSize(new Dimension(15, 15));
@@ -214,6 +214,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
+			scrollPane.setPreferredSize(new Dimension(5, 5));
 			scrollPane.setViewportView(getTable());
 		}
 		return scrollPane;
@@ -271,34 +272,39 @@ public class MenjacnicaGUI extends JFrame {
 		if (popupMenu == null) {
 			popupMenu = new JPopupMenu();
 			popupMenu.setAlignmentY(Component.TOP_ALIGNMENT);
-			popupMenu.add(getMntmNewMenuItem_1());
-			popupMenu.add(getMntmNewMenuItem_2());
-			popupMenu.add(getMntmNewMenuItem_3());
+			popupMenu.add(getMntmDodaj());
+			popupMenu.add(getMntmObrisi());
+			popupMenu.add(getMntmZamena());
 		}
 		return popupMenu;
 	}
-	private JMenuItem getMntmNewMenuItem_1() {
-		if (mntmNewMenuItem_1 == null) {
-			mntmNewMenuItem_1 = new JMenuItem("Dodaj kurs");
+	private JMenuItem getMntmDodaj() {
+		if (mntmDodaj == null) {
+			mntmDodaj = new JMenuItem("Dodaj kurs");
+			mntmDodaj.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					prikaziDodajKursGUI();
+				}
+			});
 		}
-		return mntmNewMenuItem_1;
+		return mntmDodaj;
 	}
-	private JMenuItem getMntmNewMenuItem_2() {
-		if (mntmNewMenuItem_2 == null) {
-			mntmNewMenuItem_2 = new JMenuItem("Obrisi kurs");
+	private JMenuItem getMntmObrisi() {
+		if (mntmObrisi == null) {
+			mntmObrisi = new JMenuItem("Obrisi kurs");
 		}
-		return mntmNewMenuItem_2;
+		return mntmObrisi;
 	}
-	private JMenuItem getMntmNewMenuItem_3() {
-		if (mntmNewMenuItem_3 == null) {
-			mntmNewMenuItem_3 = new JMenuItem("Izvrsi zamenu");
+	private JMenuItem getMntmZamena() {
+		if (mntmZamena == null) {
+			mntmZamena = new JMenuItem("Izvrsi zamenu");
 		}
-		return mntmNewMenuItem_3;
+		return mntmZamena;
 	}
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
-			panel_1.setPreferredSize(new Dimension(111, 12));
+			panel_1.setPreferredSize(new Dimension(100, 12));
 			panel_1.setLayout(null);
 			panel_1.add(getBtnNewButton_2());
 			panel_1.add(getBtnNewButton_3());
@@ -309,8 +315,13 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("Dodaj kurs");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					prikaziDodajKursGUI();
+				}
+			});
 			btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 10));
-			btnNewButton_2.setBounds(0, 11, 111, 23);
+			btnNewButton_2.setBounds(0, 11, 100, 23);
 		}
 		return btnNewButton_2;
 	}
@@ -318,7 +329,7 @@ public class MenjacnicaGUI extends JFrame {
 		if (btnNewButton_3 == null) {
 			btnNewButton_3 = new JButton("Obri\u0161i kurs");
 			btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 10));
-			btnNewButton_3.setBounds(0, 45, 111, 23);
+			btnNewButton_3.setBounds(0, 45, 100, 23);
 		}
 		return btnNewButton_3;
 	}
@@ -327,7 +338,7 @@ public class MenjacnicaGUI extends JFrame {
 			btnNewButton_4 = new JButton("Izvr\u0161i zamenu");
 			btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 10));
 			btnNewButton_4.setPreferredSize(new Dimension(83, 23));
-			btnNewButton_4.setBounds(0, 79, 111, 23);
+			btnNewButton_4.setBounds(0, 79, 110, 23);
 		}
 		return btnNewButton_4;
 	}
@@ -344,6 +355,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JTextArea getTextArea_1() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setPreferredSize(new Dimension(25, 25));
 		}
 		return textArea;
 	}
@@ -391,5 +403,17 @@ public class MenjacnicaGUI extends JFrame {
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	
+	private void prikaziDodajKursGUI(){
+		DodajKursGUI prozorDodaj = new DodajKursGUI(this);
+		prozorDodaj.setLocationRelativeTo(contentPane);
+		prozorDodaj.setVisible(true);
+		
+	}
+	public void prikazi(String novi) {
+		textArea.append(novi);
+	}
+	
+
 }
 
