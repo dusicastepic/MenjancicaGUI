@@ -214,6 +214,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 			String tekst = "Zamenjena valuta je:  "+comboBoxValuta.getSelectedItem().toString()+
 					" Iznos transakcije: "+tfIznos.getText() +" U pitanju je: "+ izbor();
 			glavniProzor.prikazi(tekst);
+			dispose();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(contentPane, e.getMessage(),"Greška", JOptionPane.ERROR_MESSAGE);
 		}

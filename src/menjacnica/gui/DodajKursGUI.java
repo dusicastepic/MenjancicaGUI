@@ -182,12 +182,16 @@ public class DodajKursGUI extends JFrame {
 	}
 	private void dodaj(){
 		
+		try {
 			String text ="Naziv sifre: " + tfSifra.getText() + " Naziv kursa: "+ tfNaziv.getText() + 
 					" Naziv prodajnog kursa: " + tfProdajniKurs.getText() + " Naziv kupovnog kursa: "+ tfKupovniKurs.getText() 
 					+ " Naziv srednjeg kursa: "+ tfSrednjiKurs.getText() + " Skraceni naziv:"+ tfSkraceniNaziv.getText();
-			
-			        glavniProzor.prikazi(text);
-					dispose();
+
+			glavniProzor.prikazi(text);
+			dispose();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(contentPane, e.getMessage(),"Greška", JOptionPane.ERROR_MESSAGE);
+		}
 		
 		
 	}
