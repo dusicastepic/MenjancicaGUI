@@ -2,6 +2,7 @@ package menjacnica.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.TextArea;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -42,6 +43,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JButton btnOdustani;
 
 	private MenjacnicaGUI glavniProzor;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Create the frame.
@@ -146,6 +148,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JRadioButton getRdbtnKupovina() {
 		if (rdbtnKupovina == null) {
 			rdbtnKupovina = new JRadioButton("Kupovina");
+			buttonGroup.add(rdbtnKupovina);
 			rdbtnKupovina.setBounds(194, 97, 126, 20);
 
 
@@ -155,6 +158,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JRadioButton getRdbtnProdaja() {
 		if (rdbtnProdaja == null) {
 			rdbtnProdaja = new JRadioButton("Prodaja");
+			buttonGroup.add(rdbtnProdaja);
 			rdbtnProdaja.setBounds(194, 127, 126, 20);
 
 		}
@@ -211,10 +215,12 @@ public class IzvrsiZamenuGUI extends JFrame {
 
 	private void izvrsiZamenu(){
 		try {
-			String tekst = "Zamenjena valuta je:  "+comboBoxValuta.getSelectedItem().toString()+
+			
+			String tekst ="Zamenjena valuta je:  "+comboBoxValuta.getSelectedItem().toString()+
 					" Iznos transakcije: "+tfIznos.getText() +" U pitanju je: "+ izbor();
 			glavniProzor.prikazi(tekst);
 			dispose();
+			
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(contentPane, e.getMessage(),"Greška", JOptionPane.ERROR_MESSAGE);
 		}

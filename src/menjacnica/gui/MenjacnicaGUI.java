@@ -74,7 +74,6 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton btnNewButton_3;
 	private JButton btnNewButton_4;
 	private JScrollPane scrollPane_1;
-	private JScrollPane scrollPane_2;
 	private JTextArea textArea;
 
 	/**
@@ -109,7 +108,7 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.add(getPanel());
 		contentPane.add(getScrollPane_1());
 		contentPane.add(getPanel_1(), BorderLayout.EAST);
-		contentPane.add(getScrollPane_1_1(), BorderLayout.SOUTH);
+		contentPane.add(getScrollPane_1_2(), BorderLayout.SOUTH);
 	}
 	private JPanel getPanel() {
 		if (panel == null) {
@@ -167,7 +166,8 @@ public class MenjacnicaGUI extends JFrame {
 
 				}
 			});
-			mntmNewMenuItem.setIcon(new ImageIcon("E:\\Users\\Dusica\\Desktop\\open-smallicon.png"));
+			
+			mntmNewMenuItem.setIcon(new ImageIcon(MenjacnicaGUI.class.getResource("/icons/open-smallicon.png")));
 			mntmNewMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		}
 		return mntmNewMenuItem;
@@ -180,7 +180,7 @@ public class MenjacnicaGUI extends JFrame {
 					sacuvaj();
 				}
 			});
-			mntmSave.setIcon(new ImageIcon("E:\\Users\\Dusica\\Desktop\\save.png"));
+			mntmSave.setIcon(new ImageIcon(MenjacnicaGUI.class.getResource("/icons/save.png")));
 			mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		}
 		return mntmSave;
@@ -415,6 +415,7 @@ public class MenjacnicaGUI extends JFrame {
 		
 	}
 	public void prikazi(String novi) {
+		textArea.append("\n");
 		textArea.append(novi);
 	}
 	
@@ -429,25 +430,18 @@ public class MenjacnicaGUI extends JFrame {
 		prozorIzvrsiZamenu.setLocationRelativeTo(contentPane);
 		prozorIzvrsiZamenu.setVisible(true);
 	}
-
-	private JScrollPane getScrollPane_1_1() {
+	private JScrollPane getScrollPane_1_2() {
 		if (scrollPane_1 == null) {
 			scrollPane_1 = new JScrollPane();
-			scrollPane_1.setPreferredSize(new Dimension(100, 50));
-			scrollPane_1.setViewportView(getScrollPane_2());
+			scrollPane_1.setPreferredSize(new Dimension(100, 85));
+			scrollPane_1.setViewportView(getTextArea());
 		}
 		return scrollPane_1;
-	}
-	private JScrollPane getScrollPane_2() {
-		if (scrollPane_2 == null) {
-			scrollPane_2 = new JScrollPane();
-			scrollPane_2.setViewportView(getTextArea());
-		}
-		return scrollPane_2;
 	}
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setBorder(new TitledBorder(null, "STATUS", TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		}
 		return textArea;
 	}

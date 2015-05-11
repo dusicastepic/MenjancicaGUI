@@ -42,9 +42,9 @@ public class ObrisiKursGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ObrisiKursGUI(MenjacnicaGUI glavniProzor) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setTitle("Obrisi kurs");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 415, 302);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -200,6 +200,7 @@ public class ObrisiKursGUI extends JFrame {
 						btnObrisi.setEnabled(true);
 					else {
 						btnObrisi.setEnabled(false);
+					
 					}
 
 				}
@@ -214,6 +215,7 @@ public class ObrisiKursGUI extends JFrame {
 					" Naziv prodajnog kursa: " + tfProdajniKurs.getText() + " Naziv kupovnog kursa: "+ tfKupovniKurs.getText() 
 					+ " Naziv srednjeg kursa: "+ tfSrednjiKurs.getText() + " Skraceni naziv:"+ tfSkraceniNaziv.getText();
 			glavniProzor.prikazi(tekst);
+			dispose();
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(contentPane, e.getMessage(),"Greška", JOptionPane.ERROR_MESSAGE);
